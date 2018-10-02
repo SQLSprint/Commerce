@@ -1,0 +1,74 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1400,
+  "model": {
+    "culture": "en-GB",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/sqlsprintcommerce database windows net;Commerce",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "sqlsprintcommerce.database.windows.net",
+            "database": "Commerce"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "options": {},
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "Username": "Andy",
+          "EncryptConnection": true
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Country",
+        "columns": [
+          {
+            "name": "CountryKey",
+            "dataType": "int64",
+            "sourceColumn": "CountryKey"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/sqlsprintcommerce database windows net;Commerce\",",
+                "    dbo_Country = Source{[Schema=\"dbo\",Item=\"Country\"]}[Data]",
+                "in",
+                "    dbo_Country"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Count of Country",
+            "expression": "COUNTA([Country])"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "500"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{50c6a7d6-f3f5-4268-b855-cee803124318}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql140DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -122,6 +122,9 @@
     <Folder Include="staging\Tables\" />
     <Folder Include="Security\" />
     <Folder Include="dbo" />
+    <Folder Include="dbo\Tables" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="staging\Tables\Sale.sql">
@@ -130,6 +133,11 @@
     </Build>
     <Build Include="Security\staging.sql" />
     <Build Include="Security\Permissions.sql" />
-    <Build Include="dbo\dimCountry.sql" />
+    <Build Include="dbo\Stored Procedures\Country_Insert.sql" />
+    <Build Include="dbo\Tables\dimCountry.sql" />
+    <Build Include="dbo\Views\Country.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Commerce.publish.xml" />
   </ItemGroup>
 </Project>
